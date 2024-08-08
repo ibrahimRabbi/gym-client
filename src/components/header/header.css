@@ -1,0 +1,9 @@
+header{
+    background-image: linear-gradient(to top, rgba(8, 8, 8, 0.623), rgba(0, 0, 0, 0.466)), url('https://i.ibb.co/12FWtt4/slide1.webp');
+    background-position: center;
+    background-size: cover;
+    height: 100vh;
+    background-blend-mode: darken;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
