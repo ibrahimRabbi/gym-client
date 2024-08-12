@@ -1,13 +1,16 @@
-import HomePage from "./pages/home/HomePage"
+import { Provider } from "react-redux"
+import { store } from "./redux/store"
+import { RouterProvider } from "react-router-dom"
+import { routes } from "./routes/routes"
 
  
 
 function App() {
   
   return (
-    <div>
-       <HomePage/>
-    </div>
+    <Provider store={store}>
+      <RouterProvider router={routes}/>
+    </Provider>
   )
 }
 
