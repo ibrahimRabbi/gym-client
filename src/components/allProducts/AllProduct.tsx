@@ -15,10 +15,8 @@ const AllProduct = () => {
 
     const {data}= useGetProductQuery(undefined)
 
- 
-
     return (
-        <div className="text-slate-300 h-[100vh] mt-16 grid grid-cols-4 w-[90%] mx-auto">
+        <div className=" my-16 grid grid-cols-4 gap-5 w-[90%] mx-auto">
             {
                 data?.data.map((v:Partial<Tproduct>) => {
                     return <ProductCard key={v._id} data={v} /> 

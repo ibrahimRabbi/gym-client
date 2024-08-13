@@ -30,7 +30,7 @@ const Category = () => {
                     categories.map(v => {
                         return <Link to='/all-products' className="hover:rotate-3 duration-100 cursor-pointer">
                             <Image className="rounded-2xl " preview={false} width={220} src={v.src} />
-                            <p className="text-2xl text-slate-300 ">{v.name}</p>
+                            <p className="text-2xl font-[Caveat] text-slate-300 ">{v.name}</p>
                         </Link>
                     })
                 }

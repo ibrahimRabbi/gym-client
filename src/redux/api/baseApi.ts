@@ -24,9 +24,18 @@ export const baseApi = createApi({
                     }
                 },
                 providesTags:['product']
+            }),
+            getRatingProduct: builder.query({
+                query: (query) => {
+                    return {
+                        url: `/get-product?rating=${query}&limit=4`,
+                        method:'GET'
+                    }
+                },
+                providesTags : ['product']
             })
         }
     }
 })
 
-export const {usePostProductMutation,useGetProductQuery} = baseApi
+export const {usePostProductMutation,useGetProductQuery,useGetRatingProductQuery} = baseApi

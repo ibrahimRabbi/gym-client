@@ -1,26 +1,30 @@
-import { Card } from "antd";
-import { Rating } from '@smastrom/react-rating'
+ import { Rating } from '@smastrom/react-rating'
 import '@smastrom/react-rating/style.css'
+import { useLocation } from 'react-router-dom';
 
- 
 
-const ProductCard = ({data}:any) => {
-     
-    const {image,title,price,rating} = data
-     
+
+const ProductCard = ({ data }: any) => {
+
+    const { image, title, price, rating } = data
+    const location = useLocation()
+
+    console.log(location)
+
     return (
-        <Card
-            hoverable
-            style={{ width: 240, height:420 }}
-            cover={<img className="hover:scale-110 duration-100" alt="product" src={image} />}
-        >
-            <div className="text-center p-0 mt-8">
-                <Rating style={{width:'100px',margin:'auto'}} value={rating} />
-                <p className="text-sm font-semibold mt-2">{title}</p>
-                <p className="mt-2 text-xl font-bold">{price}-TK</p>
-                <p className="mt-1 text-sm text-gray-600">2 color available</p>
-             </div>
-        </Card>
+        <div className={`flex flex-col justify-between items-center h-[500px] w-72 hover:shadow-lg`
+}>
+            <figure className="h-[60%] w-full">
+                <img className="w-full h-full hover:scale-105 duration-100" src={image}/>
+            </figure>
+            <div className="h-[30%] mt-4 text-center box-border">
+                <Rating className="w-[100px] mx-auto" value={rating}/>
+                <h2 className={`text-sm font-semibold ${location.pathname === '/'? 'text-slate-200' : 'text-zinc-950'} mt-2`}>{title}</h2>
+                <p className={`text-lg font-semibold ${location.pathname === '/' ? 'text-slate-200' : 'text-zinc-950'} mt-3`}>{price}-TK</p>
+                <p className="text-sm text-gray-400">2 color available</p>
+            </div>
+        </div>
+
     );
 };
 

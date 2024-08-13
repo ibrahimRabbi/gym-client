@@ -44,7 +44,7 @@ const Navber = () => {
                     <Logo />
                 </div>
                 <div className="navbar-center hidden lg:flex ">
-                    <ul className="menu menu-horizontal space-x-8 text-white font-semibold text-base">
+                    <ul className="menu menu-horizontal space-x-5 text-white font-[Caveat] font-semibold text-xl">
                         <li><Link to='/'>Accessories</Link></li>
                         <li><Link to='/'>Category</Link></li>
                         <li><Link to='*'>Cardio</Link></li>

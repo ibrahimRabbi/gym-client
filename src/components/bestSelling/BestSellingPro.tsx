@@ -1,0 +1,26 @@
+import { useGetRatingProductQuery } from "../../redux/api/baseApi";
+import ProductCard from "../../utils/ProductCard";
+import Title from "../../utils/Title";
+import { Tproduct } from "../allProducts/AllProduct";
+
+ 
+
+const BestSellingPro = () => {
+
+    const {data} = useGetRatingProductQuery(3)
+
+    return (
+        <section className="mt-24 w-[96%] mx-auto">
+            <Title title='Best Selling' />
+            <div className="h-[100vh] mt-10 grid grid-cols-4 gap-5 w-full mx-auto">
+                {
+                    data?.data.map((v: Partial<Tproduct>) => {
+                        return <ProductCard key={v._id} data={v} />
+                    })
+                }
+            </div>
+        </section>
+    );
+};
+
+export default BestSellingPro;

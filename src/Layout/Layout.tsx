@@ -8,7 +8,7 @@ const Layout = () => {
     const { isLoading } = useGetProductQuery(undefined)
     
     if (isLoading) {
-        return <p className="text-5xl">Loading....</p>
+        return <p className="text-5xl bg-white">Loading....</p>
     }
     return (
         <main className="h-[100vh] bg-white">
