@@ -17,25 +17,26 @@ export const baseApi = createApi({
                 invalidatesTags:['product']
             }),
             getProduct: builder.query({
-                query: () => {
+                query: ({ rating, limit }) => {
                     return {
-                        url: `/get-product`,
+                        url: `/get-product?rating=${rating}&limit=${limit}`,
+                        method: 'GET'
+                    }
+                },
+                providesTags: ['product']
+            }),
+            getSingleProduct: builder.query({
+                query: (id) => {
+                    return {
+                        url: `/single-product/${id}`,
                         method:'GET'
                     }
                 },
                 providesTags:['product']
-            }),
-            getRatingProduct: builder.query({
-                query: (query) => {
-                    return {
-                        url: `/get-product?rating=${query}&limit=4`,
-                        method:'GET'
-                    }
-                },
-                providesTags : ['product']
             })
+            
         }
     }
 })
 
-export const {usePostProductMutation,useGetProductQuery,useGetRatingProductQuery} = baseApi
+export const {usePostProductMutation,useGetProductQuery,useGetSingleProductQuery} = baseApi

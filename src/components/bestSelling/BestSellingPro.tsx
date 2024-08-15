@@ -1,13 +1,13 @@
-import { useGetRatingProductQuery } from "../../redux/api/baseApi";
+import {useGetProductQuery} from "../../redux/api/baseApi";
 import ProductCard from "../../utils/ProductCard";
 import Title from "../../utils/Title";
-import { Tproduct } from "../allProducts/AllProduct";
+import { Tproduct } from "../../pages/allProducts/AllProduct";
 
- 
+
 
 const BestSellingPro = () => {
 
-    const {data} = useGetRatingProductQuery(3)
+    const { data } = useGetProductQuery({rating:3,limit:4})
 
     return (
         <section className="mt-24 w-[96%] mx-auto">
