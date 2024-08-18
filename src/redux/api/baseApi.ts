@@ -2,8 +2,15 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 export const baseApi = createApi({
     reducerPath: 'productApi',
-    baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:5000/api', credentials: 'include' }),
-    tagTypes:['product','cart'],
+    baseQuery: fetchBaseQuery({
+        baseUrl: 'http://localhost:5000/api',
+        credentials: 'include',
+        prepareHeaders: (headers) => {
+            const token = localStorage.getItem('accessToken') 
+            headers.set('authorization',token as string)
+        }
+    }),
+    tagTypes:['product','cart','user'],
     endpoints: (builder) => {
         return {
             postProduct: builder.mutation({
@@ -54,10 +61,30 @@ export const baseApi = createApi({
                     }
                 },
                 providesTags:['cart']
+            }),
+            
+            createUser: builder.mutation({
+                query: (payload) => {
+                    return {
+                        url: '/user/create-user',
+                        method: 'POST',
+                        body: payload
+                    }
+                },
+                invalidatesTags:['user']
+            }),
+            getUser: builder.query({
+                query: () => {
+                    return {
+                        url: '/user/get-user',
+                        method: 'GET',
+                    }
+                },
+                providesTags:['user']
             })
             
         }
     }
 })
 
-export const {usePostProductMutation,useGetProductQuery,useGetSingleProductQuery,useAddCartMutation, useGetCartdataQuery} = baseApi
+export const {usePostProductMutation,useGetProductQuery,useGetSingleProductQuery,useAddCartMutation, useGetCartdataQuery,useCreateUserMutation,useGetUserQuery} = baseApi

@@ -15,12 +15,12 @@ const Cartpage = () => {
    
 
     return (
-        <section className='h-[100vh] '>
-            <div className="mt-11 w-[90%] mx-auto gap-8 cartLayout relative">
+        <section className=''>
+            <div className="my-11 w-[90%] mx-auto gap-8 cartLayout">
                 <div className="space-y-4">
                     {
-                        data?.data?.map((v:Partial<string>) => {
-                            return <CartCard  data={v} />
+                        data?.data?.map((v:Record<string,any>) => {
+                            return <CartCard key={v._id}  data={v} />
                         } )
                     }
                 </div>
