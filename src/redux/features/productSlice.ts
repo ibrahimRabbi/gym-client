@@ -1,21 +1,37 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState = {
-    name:'rabbi'
+type TState = {
+    orderData: object[],
+    quentity : Number
+}
+
+const initialState: TState = {
+    orderData: [],
+    quentity : 1
 }
 
 
-const productSlice = createSlice({
-    name: 'products',
+const orderSlice = createSlice({
+    name: 'order',
     initialState,
     reducers: {
-        addProduct: (state,payload) => {
-            return state.name = payload.payload
+        // addCart: (state, payload: PayloadAction<object>) => {
+        //     const cartData = { quentity: state.quentity, id: payload.payload._id }
+        //     state.orderData.push(cartData)
+        // },
+        incremntqnty: (state ) => {
+            state.quentity = (state.quentity) as number + 1
+        },
+        dicremntqnty: (state) => {
+            if ((state.quentity) as number < 1) {
+                state.quentity =  1
+            }
+            state.quentity = (state.quentity) as number - 1
         }
     }
 })
 
-export const {addProduct} = productSlice.actions
-export default productSlice.reducer
+export const {incremntqnty,dicremntqnty } = orderSlice.actions
+export default orderSlice.reducer
 
 

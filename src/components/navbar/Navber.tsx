@@ -1,19 +1,21 @@
- 
+
 import Logo from "../../utils/Logo";
 import SearchIcon from "../../utils/searchIcon";
 import UserIcon from "../../utils/UserIcon";
 import CartIcon from "../../utils/CartIcon";
 import { Link, useLocation } from "react-router-dom";
+import { useGetCartdataQuery } from "../../redux/api/baseApi";
+import { Badge } from "antd";
 
- 
+
 
 const Navber = () => {
-    const location = useLocation()
-    
+    const location = useLocation() 
+    const { data } = useGetCartdataQuery(undefined)
 
     return (
-        <div className={`navbar ${location.pathname === '/'?'bg-none': 'bg-zinc-900'} w-full`}>
-            <div className={`lg:w-[90%] w-full mx-auto ${location.pathname === '/'? 'pt-4': 'pt-1'}`}>
+        <div className={`navbar ${location.pathname === '/' ? 'bg-none' : 'bg-zinc-900'} w-full`}>
+            <div className={`lg:w-[90%] w-full mx-auto ${location.pathname === '/' ? 'pt-4' : 'pt-1'}`}>
                 <div className="navbar-start">
                     <div className="dropdown">
                         <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -55,11 +57,12 @@ const Navber = () => {
                 <div className="navbar-end space-x-6 flex items-center ">
                     <SearchIcon />
                     <UserIcon />
-                    <CartIcon />
-
+                    <Badge count={data?.data?.length}>
+                        <Link to='/all-products/cart'> <CartIcon /></Link>
+                    </Badge>
                 </div>
             </div>
-            
+
         </div>
     );
 };

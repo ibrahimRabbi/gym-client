@@ -1,10 +1,30 @@
 import { configureStore } from "@reduxjs/toolkit";
 import productSlice from "./features/productSlice";
 import { baseApi } from "./api/baseApi";
+// import {
+//     persistStore,
+//     persistReducer,
+//     FLUSH,
+//     REHYDRATE,
+//     PAUSE,
+//     PERSIST,
+//     PURGE,
+//     REGISTER,
+// } from 'redux-persist';
+// import storage from 'redux-persist/lib/storage'
+
+// const persistConfig = {
+//     key: 'root',
+//     storage,
+// }
+
+
+// const persistedReducer = persistReducer(persistConfig, productSlice)
+
 
 export const store = configureStore({
     reducer: {
-        productData: productSlice,
+        orderData: productSlice,
         [baseApi.reducerPath]: baseApi.reducer
     },
     middleware: (getDefaultMiddleware) => {
@@ -14,6 +34,6 @@ export const store = configureStore({
 })
 
 
-
+// export let persistor = persistStore(store)
 export type RootState = ReturnType<typeof store.getState>
 export type AppDispatch = typeof store.dispatch

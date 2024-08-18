@@ -1,11 +1,13 @@
 import ImageGallery from "react-image-gallery";
+import "react-image-gallery/styles/css/image-gallery.css";
 
 const Slider = ({ images }: any) => {
+    
     const img = [images, images, images, images]
     const slider:object[] = []
 
     img.forEach(v => {
-        slider.push({ original: v, thumbnail: v })
+       return slider.push({ original: v, thumbnail: v })
     })
 
     return (
