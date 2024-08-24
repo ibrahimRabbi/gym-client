@@ -14,9 +14,10 @@ const Calculate = ({ data }: any) => {
   
     data.forEach((v:any) => {
         quantitiy = quantitiy + v.quentity
-        amount = amount + (v.id.price * v.quentity) 
+        amount = amount + (v.productId.price * v.quentity) 
     });
  
+
     if (amount>0) {
     subTotal = amount - discount
     }

@@ -2,8 +2,8 @@
 
 const CartCard = ({data}:any) => {
 
-    const { quentity, id } = data
-    const {price,title,image} = id
+    const { quentity, productId } = data
+    const {price,title,image} = productId
  
      
     return (

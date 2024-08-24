@@ -6,11 +6,11 @@ export const baseApi = createApi({
         baseUrl: 'http://localhost:5000/api',
         credentials: 'include',
         prepareHeaders: (headers) => {
-            const token = localStorage.getItem('accessToken') 
-            headers.set('authorization',token as string)
+            const token = localStorage.getItem('accessToken')
+            headers.set('authorization', token as string)
         }
     }),
-    tagTypes:['product','cart','user'],
+    tagTypes: ['product', 'cart', 'user'],
     endpoints: (builder) => {
         return {
             postProduct: builder.mutation({
@@ -18,10 +18,10 @@ export const baseApi = createApi({
                     return {
                         url: `/product/upload`,
                         method: 'POST',
-                        body:data
+                        body: data
                     }
                 },
-                invalidatesTags:['product']
+                invalidatesTags: ['product']
             }),
             getProduct: builder.query({
                 query: ({ rating, limit }) => {
@@ -36,10 +36,10 @@ export const baseApi = createApi({
                 query: (id) => {
                     return {
                         url: `/product/single-product/${id}`,
-                        method:'GET'
+                        method: 'GET'
                     }
                 },
-                providesTags:['product']
+                providesTags: ['product']
             }),
 
             addCart: builder.mutation({
@@ -47,22 +47,22 @@ export const baseApi = createApi({
                     return {
                         url: '/cart/addcart',
                         method: 'POST',
-                        body:payload
+                        body: payload
                     }
                 },
-                invalidatesTags:['cart']
+                invalidatesTags: ['cart']
             }),
 
             getCartdata: builder.query({
                 query: () => {
                     return {
                         url: '/cart/getcart',
-                        method:'GET'
+                        method: 'GET'
                     }
                 },
-                providesTags:['cart']
+                providesTags: ['cart']
             }),
-            
+
             createUser: builder.mutation({
                 query: (payload) => {
                     return {
@@ -71,7 +71,16 @@ export const baseApi = createApi({
                         body: payload
                     }
                 },
-                invalidatesTags:['user']
+                invalidatesTags: ['user']
+            }),
+            signin: builder.mutation({
+                query: (payload) => {
+                    return {
+                        url: '/user/sign-in',
+                        method: 'POST',
+                        body: payload
+                    }
+                }
             }),
             getUser: builder.query({
                 query: () => {
@@ -80,11 +89,11 @@ export const baseApi = createApi({
                         method: 'GET',
                     }
                 },
-                providesTags:['user']
+                providesTags: ['user']
             })
-            
+
         }
     }
 })
 
-export const {usePostProductMutation,useGetProductQuery,useGetSingleProductQuery,useAddCartMutation, useGetCartdataQuery,useCreateUserMutation,useGetUserQuery} = baseApi
+export const { usePostProductMutation, useGetProductQuery, useGetSingleProductQuery, useAddCartMutation, useGetCartdataQuery, useCreateUserMutation, useGetUserQuery,useSigninMutation } = baseApi

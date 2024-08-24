@@ -1,27 +1,49 @@
 import { toast } from "react-toastify";
-import { useAddCartMutation } from "../../redux/api/baseApi";
+import { useAddCartMutation, useGetUserQuery } from "../../redux/api/baseApi";
 import { useAppSelector } from "../../redux/hook";
+import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 
 
 const CartButtons = ({ data }: any) => {
 
     const quentity = useAppSelector(state => state.orderData.quentity)
-    const [addData, { data: resposnose}] = useAddCartMutation()
+    const [addData] = useAddCartMutation()
+    const { data: user } = useGetUserQuery(undefined)
+    const navigate = useNavigate()
 
-
-    if (resposnose?.message === 'Error: this item already added') {
-        toast('this item already added in the cart')
-    }
      
 
-    const addToCartHandler = () => {
+
+ 
+     
+
+    const addToCartHandler = async () => {
    
+        if (user.error) {
+            navigate('/sign-in')
+        }
+
         const cartData = {
             quentity,
-            id: data.data._id
+            productId: data.data._id,
+            userEmail: user.data.email
         }
-        addData(cartData)
+        const respond = await addData(cartData).unwrap()
+        
+        if (respond.error) {
+            toast('this item already added')
+        } else {
+            Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: "item added successfully",
+                showConfirmButton: false,
+                timer: 2000
+            });
+            navigate('/all-products')
+        }
     }
 
     const buyNowHandler = () => {

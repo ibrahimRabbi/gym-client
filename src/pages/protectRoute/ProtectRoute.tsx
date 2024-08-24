@@ -10,14 +10,14 @@ type Tchildren = {
 
 const ProtectRoute = ({ children }: Tchildren) => {
 
-   const {data,isLoading} = useGetUserQuery(undefined)
- 
+    const { data, isLoading } = useGetUserQuery(undefined)
+    
     if (isLoading) {
         return <h1 className="text-2xl bg-white">Loading...</h1>
     }
 
     
-    if (!data) {
+    if (data?.message ==='jwt expired') {
         return <Navigate to='/sign-in' />
     }
 

@@ -7,7 +7,7 @@ import './cart.css'
 const Cartpage = () => {
 
     const {data,isLoading} = useGetCartdataQuery(undefined)
-
+console.log(data)
     if (isLoading) {
     return <h1>loadinng...</h1>
     }
