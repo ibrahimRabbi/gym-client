@@ -27,8 +27,8 @@ const CartButtons = ({ data }: any) => {
 
         const cartData = {
             quentity,
-            productId: data.data._id,
-            userEmail: user.data.email
+            productId: data?.data?._id,
+            userEmail: user?.data?.email
         }
         const respond = await addData(cartData).unwrap()
         

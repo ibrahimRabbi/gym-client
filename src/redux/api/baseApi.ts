@@ -90,10 +90,19 @@ export const baseApi = createApi({
                     }
                 },
                 providesTags: ['user']
+            }),
+            payment: builder.mutation({
+                query: (payload) => {
+                    return {
+                        url: `/payment`,
+                        method: 'POST',
+                        body: payload
+                    }
+                }
             })
 
         }
     }
 })
 
-export const { usePostProductMutation, useGetProductQuery, useGetSingleProductQuery, useAddCartMutation, useGetCartdataQuery, useCreateUserMutation, useGetUserQuery,useSigninMutation } = baseApi
+export const { usePostProductMutation, useGetProductQuery, useGetSingleProductQuery, useAddCartMutation, useGetCartdataQuery, useCreateUserMutation, useGetUserQuery, useSigninMutation,usePaymentMutation } = baseApi
