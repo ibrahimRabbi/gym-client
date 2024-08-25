@@ -1,5 +1,7 @@
+ 
 import { useNavigate } from "react-router-dom";
-import { usePaymentMutation } from "../../redux/api/baseApi";
+import { useGetUserQuery, usePaymentMutation } from "../../redux/api/baseApi";
+import { toast } from "react-toastify";
 
   
 
@@ -11,7 +13,10 @@ const Calculate = ({ data }: any) => {
     let discount = 10;
     let subTotal = 0
     const [payment] = usePaymentMutation()
+    const { data: user } = useGetUserQuery(undefined)
     const navigate = useNavigate()
+    
+   
      
   
     data.forEach((v:any) => {
@@ -26,8 +31,15 @@ const Calculate = ({ data }: any) => {
 
     
     const paymentHandler = async () => {
-        const response = await payment({ amount: subTotal, currency: 'BDT' }).unwrap()
-         window.location.assign(response.url)
+        if (user.error) {
+         return  navigate('/sign-in')
+        }
+        const response = await payment({ amount: subTotal, currency: 'BDT', products: data, user: user.data }).unwrap()
+         
+        if (response.error) {
+           return toast('payment faild plz input carefully')
+        }
+        window.location.assign(response.url)
     }
      
     return (

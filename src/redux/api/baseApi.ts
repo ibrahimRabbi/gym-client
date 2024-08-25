@@ -54,9 +54,10 @@ export const baseApi = createApi({
             }),
 
             getCartdata: builder.query({
-                query: () => {
+                query: (email) => {
+                    console.log(email)
                     return {
-                        url: '/cart/getcart',
+                        url: `/cart/getcart?email=${email}`,
                         method: 'GET'
                     }
                 },
@@ -80,7 +81,8 @@ export const baseApi = createApi({
                         method: 'POST',
                         body: payload
                     }
-                }
+                },
+                invalidatesTags:['user']
             }),
             getUser: builder.query({
                 query: () => {
@@ -98,7 +100,8 @@ export const baseApi = createApi({
                         method: 'POST',
                         body: payload
                     }
-                }
+                },
+                invalidatesTags:['product']
             })
 
         }
