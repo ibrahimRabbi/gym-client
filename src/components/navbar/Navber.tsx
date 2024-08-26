@@ -45,7 +45,7 @@ const Navber = () => {
                             <li><Link to='/'>Category</Link></li>
                             <li><Link to='*'>Cardio</Link></li>
                             <li><Link to='*'>Strength</Link></li>
-                            <li><Link to='*'>Tools</Link></li>
+                            <li><Link to='/dashboard'>Deshboard</Link></li>
 
                         </ul>
                     </div>
@@ -57,7 +57,7 @@ const Navber = () => {
                         <li><Link to='/'>Category</Link></li>
                         <li><Link to='*'>About Us</Link></li>
                         <li><Link to='*'>Strength</Link></li>
-                        <li><Link to='*'>Deshboard</Link></li>
+                        <li><Link to='/dashboard'>Deshboard</Link></li>
                     </ul>
                 </div>
                 <div className="navbar-end space-x-6 flex items-center ">

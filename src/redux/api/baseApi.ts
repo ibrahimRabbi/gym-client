@@ -13,16 +13,7 @@ export const baseApi = createApi({
     tagTypes: ['product', 'cart', 'user'],
     endpoints: (builder) => {
         return {
-            postProduct: builder.mutation({
-                query: (data) => {
-                    return {
-                        url: `/product/upload`,
-                        method: 'POST',
-                        body: data
-                    }
-                },
-                invalidatesTags: ['product']
-            }),
+            
             getProduct: builder.query({
                 query: ({ rating, limit }) => {
                     return {
@@ -102,10 +93,30 @@ export const baseApi = createApi({
                     }
                 },
                 invalidatesTags:['product']
+            }),
+            addProduct: builder.mutation({
+                query: (payload) => {
+                    return {
+                        url: `product/addproduct`,
+                        method: 'POST',
+                        body: payload
+                    }
+                },
+                invalidatesTags: ['product']
+            }),
+
+            deleteProduct: builder.mutation({
+                query: (id) => {
+                    return {
+                        url: `product/delete-product/${id}`,
+                        method: 'DELETE',
+                    }
+                },
+                invalidatesTags: ['product']
             })
 
         }
     }
 })
 
-export const { usePostProductMutation, useGetProductQuery, useGetSingleProductQuery, useAddCartMutation, useGetCartdataQuery, useCreateUserMutation, useGetUserQuery, useSigninMutation,usePaymentMutation } = baseApi
+export const { useGetProductQuery, useGetSingleProductQuery, useAddCartMutation, useGetCartdataQuery, useCreateUserMutation, useGetUserQuery, useSigninMutation,usePaymentMutation,useAddProductMutation,useDeleteProductMutation } = baseApi
