@@ -17,7 +17,7 @@ const ProtectRoute = ({ children }: Tchildren) => {
     }
 
     
-    if (data?.message ==='jwt expired') {
+    if (data?.error) {
         return <Navigate to='/sign-in' />
     }
 

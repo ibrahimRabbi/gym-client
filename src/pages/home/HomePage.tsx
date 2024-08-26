@@ -1,3 +1,4 @@
+import About from "../../components/about/About";
 import Advice from "../../components/Advice/Advice";
 import BestSellingPro from "../../components/bestSelling/BestSellingPro";
 import Category from "../../components/category/Category";
@@ -11,7 +12,8 @@ const HomePage = () => {
             <Header />
             <Category />
             <Advice />
-            <BestSellingPro/>
+            <BestSellingPro />
+            <About/>
             <Footer/>
         </div>
     );

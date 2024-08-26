@@ -13,11 +13,7 @@ const CartButtons = ({ data }: any) => {
     const { data: user } = useGetUserQuery(undefined)
     const navigate = useNavigate()
 
-     
-
-
- 
-     
+      
 
     const addToCartHandler = async () => {
    
@@ -33,7 +29,7 @@ const CartButtons = ({ data }: any) => {
         const respond = await addData(cartData).unwrap()
         
         if (respond.error) {
-            toast('this item already added')
+           return toast('this item already added')
         } else {
             Swal.fire({
                 position: "top-end",

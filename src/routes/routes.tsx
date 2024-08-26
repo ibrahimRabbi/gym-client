@@ -33,7 +33,7 @@ export const routes = createBrowserRouter([
 
             {
                 path: 'cart',
-                element:<Cartpage/>
+                element: <ProtectRoute><Cartpage /></ProtectRoute>
             },     
         ],
         
