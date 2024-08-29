@@ -3,7 +3,7 @@ import './aboute.css'
 
 const About = () => {
     return (
-        <section className=''>
+        <section id='about' className=''>
             <div className="about bg-fixed flex justify-center items-center h-[450px] w-[80%] mx-auto mb-10 rounded-lg">
                 <div className='bg-white w-1/2 rounded-lg text-center p-6'>
                     <div className="avatar">

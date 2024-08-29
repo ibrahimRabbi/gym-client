@@ -42,11 +42,10 @@ const Navber = () => {
                             tabIndex={0}
                             className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
                             <li><Link to='/'>Accessories</Link></li>
-                            <li><Link to='/'>Category</Link></li>
-                            <li><Link to='*'>Cardio</Link></li>
-                            <li><Link to='*'>Strength</Link></li>
+                            <li><a href='#category'>Category</a></li>
+                            <li><a href='#about'>About Us</a></li>
+                            <li><Link to='/'>Strength</Link></li>
                             <li><Link to='/dashboard/manage-product'>Deshboard</Link></li>
-
                         </ul>
                     </div>
                     <Logo />
@@ -54,9 +53,9 @@ const Navber = () => {
                 <div className="navbar-center hidden lg:flex ">
                     <ul className="menu menu-horizontal space-x-5 text-white font-[Caveat] font-semibold text-xl">
                         <li><Link to='/'>Accessories</Link></li>
-                        <li><Link to='/'>Category</Link></li>
-                        <li><Link to='*'>About Us</Link></li>
-                        <li><Link to='*'>Strength</Link></li>
+                        <li><a href='#category'>Category</a></li>
+                        <li><a href='#about'>About Us</a></li>
+                        <li><Link to='/'>Strength</Link></li>
                         <li><Link to='/dashboard/manage-product'>Deshboard</Link></li>
                     </ul>
                 </div>
@@ -64,7 +63,7 @@ const Navber = () => {
                     <SearchIcon />
                     <UserIcon />
                     <Badge count={data?.data?.length}>
-                        <Link to='/all-products/cart'> <CartIcon /></Link>
+                        <Link to='/products/cart'> <CartIcon /></Link>
                     </Badge>
                 </div>
             </div>

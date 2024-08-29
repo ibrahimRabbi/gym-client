@@ -44,6 +44,15 @@ export const baseApi = createApi({
                 },
                 invalidatesTags: ['cart']
             }),
+            deleteCart: builder.mutation({
+                query: (id) => {
+                    return {
+                        url: `/cart/delete-cart/${id}`,
+                        method: 'DELETE',  
+                    }
+                },
+                invalidatesTags: ['cart']
+            }),
 
             getCartdata: builder.query({
                 query: (email) => {
@@ -129,4 +138,4 @@ export const baseApi = createApi({
     }
 })
 
-export const { useGetProductQuery, useGetSingleProductQuery, useAddCartMutation, useGetCartdataQuery, useCreateUserMutation, useGetUserQuery, useSigninMutation,usePaymentMutation,useAddProductMutation,useDeleteProductMutation,useUpdateProductMutation } = baseApi
+export const { useGetProductQuery, useGetSingleProductQuery, useAddCartMutation, useDeleteCartMutation, useGetCartdataQuery, useCreateUserMutation, useGetUserQuery, useSigninMutation,usePaymentMutation,useAddProductMutation,useDeleteProductMutation,useUpdateProductMutation } = baseApi

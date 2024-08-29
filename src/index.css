@@ -6,4 +6,9 @@ body{
     margin: 0px;
     padding: 0px;
     background: rgb(11, 8, 19);
+   
 }
+
+ html{
+    scroll-behavior: smooth;
+ }

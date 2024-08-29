@@ -23,7 +23,7 @@ const Category = () => {
 
     
     return (
-        <div className="mt-20 w-[90%] mx-auto ">
+        <div id="category" className="mt-20 w-[90%] mx-auto ">
             <Title title='Shop by Category' />
             <div className=" mt-7 grid grid-cols-5 gap-x-8 gap-y-14">
                 {

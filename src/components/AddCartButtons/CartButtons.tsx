@@ -38,7 +38,7 @@ const CartButtons = ({ data }: any) => {
                 showConfirmButton: false,
                 timer: 2000
             });
-            navigate('/all-products')
+            navigate('/products')
         }
     }
 

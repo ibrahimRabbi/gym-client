@@ -1,11 +1,26 @@
+import { FaTrashAlt } from "react-icons/fa";
+import { useDeleteCartMutation } from "../../redux/api/baseApi";
+import { toast } from "react-toastify";
+
  
 
 const CartCard = ({data}:any) => {
 
-    const { quentity, productId } = data
-    const {price,title,image} = productId
+    const { quentity, productId,_id } = data
+    const { price, title, image } = productId
+    const [deleteCart] = useDeleteCartMutation()
  
+
+
+    const handler = async (id:string) => {
+        const respond = await deleteCart(id).unwrap()
+        if (respond.data) {
+            toast('cart data has been deleted')
+        }
+    }
      
+
+    
     return (
         <section>
             <div className="flex items-start gap-6 border p-4 rounded-lg shadow-md">
@@ -23,9 +38,9 @@ const CartCard = ({data}:any) => {
                     </div>
                     <div className="flex items-center gap-11 mt-5">
                         <p className=" font-semibold mt-2">Price :{price} -TK</p>
-                        {/* <button onClick={() => handler(obj?._id)}>
+                        <button onClick={() => handler(_id)}>
                             <FaTrashAlt className="text-red-600 text-xl mt-2" />
-                        </button> */}
+                        </button>
                     </div>
                 </div>
             </div>

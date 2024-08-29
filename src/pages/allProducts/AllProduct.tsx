@@ -19,7 +19,7 @@ const AllProduct = () => {
      
     const { state } = useLocation()
     const { data, isLoading } = useGetProductQuery(state? {search:state}:{})
- console.log(data)
+ 
     
 
 
