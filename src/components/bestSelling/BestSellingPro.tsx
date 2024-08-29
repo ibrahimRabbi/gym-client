@@ -10,7 +10,7 @@ const BestSellingPro = () => {
     const { data } = useGetProductQuery({rating:3,limit:4})
 
     return (
-        <section className="mt-24 w-[96%] mx-auto">
+        <section className="mt-24 w-[90%] mx-auto">
             <Title title='Best Selling' />
             <div className="h-[100vh] mt-10 grid grid-cols-4 gap-5 w-full mx-auto">
                 {

@@ -15,9 +15,10 @@ export const baseApi = createApi({
         return {
             
             getProduct: builder.query({
-                query: ({ rating, limit }) => {
+                query: ({ rating, limit, search }) => {
+                    
                     return {
-                        url: `/product/get-product?rating=${rating}&limit=${limit}`,
+                        url: `/product/get-product?search=${search}&rating=${rating}&limit=${limit}`,
                         method: 'GET'
                     }
                 },
@@ -97,7 +98,7 @@ export const baseApi = createApi({
             addProduct: builder.mutation({
                 query: (payload) => {
                     return {
-                        url: `product/addproduct`,
+                        url: `/product/addproduct`,
                         method: 'POST',
                         body: payload
                     }
@@ -108,15 +109,24 @@ export const baseApi = createApi({
             deleteProduct: builder.mutation({
                 query: (id) => {
                     return {
-                        url: `product/delete-product/${id}`,
+                        url: `/product/delete-product/${id}`,
                         method: 'DELETE',
                     }
                 },
                 invalidatesTags: ['product']
+            }),
+            updateProduct: builder.mutation({
+                query: ({data,id}) => {
+                    return {
+                        url: `/product/update-product/${id}`,
+                        method: 'PATCH',
+                        body: data  
+                    }
+                }
             })
 
         }
     }
 })
 
-export const { useGetProductQuery, useGetSingleProductQuery, useAddCartMutation, useGetCartdataQuery, useCreateUserMutation, useGetUserQuery, useSigninMutation,usePaymentMutation,useAddProductMutation,useDeleteProductMutation } = baseApi
+export const { useGetProductQuery, useGetSingleProductQuery, useAddCartMutation, useGetCartdataQuery, useCreateUserMutation, useGetUserQuery, useSigninMutation,usePaymentMutation,useAddProductMutation,useDeleteProductMutation,useUpdateProductMutation } = baseApi

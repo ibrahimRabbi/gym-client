@@ -11,7 +11,7 @@ export type Tproduct = {
     description: string,
     price: number,
     image: string,
-    category: 'bike' | 'cable-machine' | 'dumbbell' | 'treadmill',
+    category: 'bike' | 'cable-machine' | 'dumbbell' | 'treadmill' | 'bench' | "barbell"
     stock: number
 }
 
@@ -20,7 +20,7 @@ export type Tproduct = {
 
 const AddProduct = () => {
     const { register, reset, handleSubmit, formState: { errors } } = useForm();
-    const category = ['bike', 'cable-machine', 'dumbbell', 'treadmill'].sort()
+    const category = ['bike', 'cable-machine', 'dumbbell', 'treadmill', 'bench','barbell'].sort()
     const [addproduct,{isLoading}] = useAddProductMutation()
      
      

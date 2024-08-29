@@ -6,6 +6,7 @@ import CartIcon from "../../utils/CartIcon";
 import { Link, useLocation } from "react-router-dom";
 import { useGetCartdataQuery, useGetUserQuery } from "../../redux/api/baseApi";
 import { Badge } from "antd";
+ 
 
 
 
@@ -13,11 +14,10 @@ const Navber = () => {
     const location = useLocation() 
     const {data:user} = useGetUserQuery(undefined)
     const { data } = useGetCartdataQuery(user?.data?.email)
+    
 
     
-    if (!data) {
-        return <h1>Loading</h1>
-    }
+    
 
     return (
         <div className={`navbar ${location.pathname === '/' ? 'bg-none' : 'bg-zinc-900'} w-full`}>
@@ -45,7 +45,7 @@ const Navber = () => {
                             <li><Link to='/'>Category</Link></li>
                             <li><Link to='*'>Cardio</Link></li>
                             <li><Link to='*'>Strength</Link></li>
-                            <li><Link to='/dashboard'>Deshboard</Link></li>
+                            <li><Link to='/dashboard/manage-product'>Deshboard</Link></li>
 
                         </ul>
                     </div>
@@ -57,10 +57,10 @@ const Navber = () => {
                         <li><Link to='/'>Category</Link></li>
                         <li><Link to='*'>About Us</Link></li>
                         <li><Link to='*'>Strength</Link></li>
-                        <li><Link to='/dashboard'>Deshboard</Link></li>
+                        <li><Link to='/dashboard/manage-product'>Deshboard</Link></li>
                     </ul>
                 </div>
-                <div className="navbar-end space-x-6 flex items-center ">
+                <div className="navbar-end space-x-8 flex items-center ">
                     <SearchIcon />
                     <UserIcon />
                     <Badge count={data?.data?.length}>

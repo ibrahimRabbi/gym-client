@@ -11,6 +11,7 @@ import SignUp from "../components/form/signup";
 import Dashboard from "../pages/dashboard/Dashboard";
 import AddProduct from "../pages/dashboard/Addproduct";
 import ManangeProduct from "../pages/dashboard/ManageProduct";
+import UpdateProduct from "../pages/dashboard/Update";
 
 
 
@@ -21,29 +22,33 @@ export const routes = createBrowserRouter([
         element: <HomePage />
     },
     {
-        path: '/all-products',
+        path: '/products',
         element: <Layout />,
         children: [
             {
                 index: true,
                 element: <AllProduct />
             },
+            {
+                path: ':category',
+                element: <AllProduct />
+            },
 
             {
-                path: ':id',
-                element:<ShowSinglePro/>
+                path: ':category/:id',
+                element: <ShowSinglePro />
             },
 
             {
                 path: 'cart',
                 element: <ProtectRoute><Cartpage /></ProtectRoute>
-            },     
+            },
         ],
-        
+
     },
     {
         path: '/payment',
-        element: <ProtectRoute><Payment/></ProtectRoute>
+        element: <ProtectRoute><Payment /></ProtectRoute>
     },
     {
         path: '/sign-in',
@@ -51,7 +56,7 @@ export const routes = createBrowserRouter([
     },
     {
         path: '/sign-up',
-        element:<SignUp/>
+        element: <SignUp />
     },
     {
         path: '/dashboard',
@@ -59,11 +64,15 @@ export const routes = createBrowserRouter([
         children: [
             {
                 path: 'addproduct',
-                element:<AddProduct/>
+                element: <AddProduct />
             },
             {
-                index:true,
-                element:<ManangeProduct/>
+                path: 'manage-product',
+                element: <ManangeProduct />
+            },
+            {
+                path: 'upadte-product/:id',
+                element: <UpdateProduct />
             }
         ]
     }

@@ -6,12 +6,12 @@ import { Link, useLocation } from 'react-router-dom';
 
 const ProductCard = ({ data }: any) => {
 
-    const { image, title, price, rating, _id } = data
+    const { image, title, price, rating, _id,category } = data
     const location = useLocation()
 
 
     return (
-        <Link to={`/all-products/${_id}`} className={`flex flex-col justify-between items-center h-[500px] w-72 hover:shadow-lg hover:scale-105 duration-100`
+        <Link to={`/products/${category}/${_id}`} className={`flex flex-col justify-between items-center h-[500px] w-72 hover:shadow-lg hover:scale-105 duration-100`
 }>
             <figure className="h-[60%] w-full">
                 <img className="w-full h-full hover:scale-100 duration-100" src={image}/>

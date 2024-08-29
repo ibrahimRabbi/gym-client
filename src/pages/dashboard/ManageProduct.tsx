@@ -83,9 +83,9 @@ const ManangeProduct = () => {
                                         <th>{v.title}</th>
                                         <td>{v.stock}</td>
                                         <td>{v.price}-TK</td>
-                                        <td><button onClick={() => deleteHandler(v._id)} className=' p-3 ring-1 ring-red-500 bg-transparent rounded-full hover:bg-red-600 hover:text-white'><RxCross2 className='text-xl' /></button></td>
+                                        <td><button onClick={() => deleteHandler(v._id as string)} className=' p-3 ring-1 ring-red-500 bg-transparent rounded-full hover:bg-red-600 hover:text-white'><RxCross2 className='text-xl' /></button></td>
                                         <td>
-                                            <Link to={`/dashboard/update/${v._id}`} state={v} className="p-2 rounded-lg text-zinc-950 bg-amber-500">update</Link>
+                                            <Link to={`/dashboard/upadte-product/${v._id}`} state={v} className="p-2 rounded-lg text-zinc-950 bg-amber-500">update</Link>
                                         </td>
                                     </tr>
 

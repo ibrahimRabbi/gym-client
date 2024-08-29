@@ -1,6 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 import productSlice from "./features/productSlice";
 import { baseApi } from "./api/baseApi";
+import clickSlice from "./features/clickSlice";
 // import {
 //     persistStore,
 //     persistReducer,
@@ -25,12 +26,13 @@ import { baseApi } from "./api/baseApi";
 export const store = configureStore({
     reducer: {
         orderData: productSlice,
+        click :clickSlice,
         [baseApi.reducerPath]: baseApi.reducer
     },
     middleware: (getDefaultMiddleware) => {
         return getDefaultMiddleware().concat(baseApi.middleware)
     }
-    
+
 })
 
 
